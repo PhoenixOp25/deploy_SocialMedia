@@ -1,31 +1,36 @@
-img{
-    width:12%;
+img {
+    width: 10%;
     object-fit: contain;
-    background-color: rgb(253, 253, 253);
-}
-.Navbar{
+  }
+  
+  .navbar {
     display: flex;
     justify-content: space-around;
-    box-shadow: 1px 5px 5px rgba(69, 51, 51, 0.414);
-
-}
-ul{
+  
+    box-shadow: 1px 5px 5px #e0dcdc;
+  }
+  
+  .nav-mobile {
+    display: none;
+  }
+  
+  ul {
     display: flex;
-    /*to make them horizontal*/
-}
-li{
-    list-style: none; 
-    /* to remove li bullet marks*/
-    padding: 1px 15px;
-}
-a{
+    align-items: baseline;
+  }
+  
+  li {
+    list-style: none;
+    padding: 1px 20px;
+  }
+  
+  a {
     text-decoration: none;
     color: black;
-    font-size: 19px;
-}
-
-
-.primaryBtn{
+    font-size: 18px;
+  }
+  
+  .primaryBtn {
     cursor: pointer;
     font-weight: bolder;
     padding: 13px 25px;
@@ -36,9 +41,56 @@ a{
     border-radius: 15px;
     margin-left: 20px;
     transition: all 0.25s ease;
-}
-
-.primaryBtn:hover{
+  }
+  
+  .primaryBtn:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px -10px rgba(219, 24, 44, 0.6);
-}
+  }
+  
+  @media screen and (max-width: 800px) {
+    /* Hide desktop-specific elements */
+    #insta-logo {
+      display: none;
+    }
+    .nav-menu {
+      display: none;
+    }
+    
+    /* Style the mobile navbar */
+    .navbar {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0px -2px 5px rgba(0,0,0,0.1); /* Slight shadow for depth */
+      z-index: 100; /* Ensure the navbar is above other content */
+    }
+    
+    .nav-mobile {
+      display: flex;
+      justify-content: space-around; /* Space items evenly */
+      align-items: center; /* Vertically center items */
+      height: 60px; /* Fixed height for the navbar */
+    }
+  
+    .nav-mobile li {
+      list-style-type: none; /* Remove bullet points */
+    }
+  
+    .nav-mobile li span.material-symbols-outlined {
+      font-size: 24px; /* Adjust icon size as needed */
+      display: block; /* Make icons center-align */
+      color: #000; /* Icon color */
+    }
+  
+    .nav-mobile li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none; /* Remove underline from links */
+      color: inherit; /* Inherit text color from parent */
+    }
+  }
+  
