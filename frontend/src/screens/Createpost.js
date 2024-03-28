@@ -84,9 +84,9 @@ function Createpost() {
         <div className='details'>
             <div className='card-header'>
                 <div className='card-pic'>
-                    <img src="https://square-vn.com/app/dscms/assets/images/person-3.jpg?v=1653932875 " alt=""/>
+                    <img src="https://spng.pngfind.com/pngs/s/5-53481_med-boukrima-specialist-webmaster-php-e-commerce-web.png" alt=""/>
                 </div>
-                <h5>Riya</h5>
+                <h5>Hello User,upload your post after, crop it properly</h5>
             </div>
             <textarea value={body}  onChange={(e)=>{
                 setBody(e.target.value)
