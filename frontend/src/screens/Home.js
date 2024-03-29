@@ -13,7 +13,8 @@ function Home() {
   const [show,setShow]=useState(false);
 
   const [item,setItem]=useState([])
-
+let limit=10;
+let skip=0;
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg)
@@ -24,17 +25,34 @@ function Home() {
       if(!token){
         navigate("./signup")
       }
-      //Fethcing all posts
-      fetch("/allposts",{
-        headers:{
-          Authorization:"Bearer " + localStorage.getItem("jwt") 
-        },
-      }).then(res=>res.json())
-      .then((result)=> {
-        console.log(result);
-        setData(result)})
-      .catch(err=>console.log(err))
+     fetchPosts()
+
+     window.addEventListener("scroll",handleScroll)
+     return ()=>{
+      window.removeEventListener("scroll",handleScroll)
+     }
+
   },[])
+
+const fetchPosts=()=>{
+   //Fethcing all posts
+   fetch(`/allposts?limit=${limit}&skip=${skip}`,{
+    headers:{
+      Authorization:"Bearer " + localStorage.getItem("jwt") 
+    },
+  }).then(res=>res.json())
+  .then((result)=> {
+    console.log(result);
+    setData((data)=>[...data,...result])})
+  .catch(err=>console.log(err))
+}
+
+const handleScroll=()=>{
+  if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) { // You can adjust the '- 10' to control when the fetch happens
+    skip += 10; // Increase the limit to fetch more posts
+    fetchPosts();
+  }
+}
 
   //to show and hide comment
   const toggleComment=(posts)=>{
